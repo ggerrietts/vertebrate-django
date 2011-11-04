@@ -1,0 +1,39 @@
+{% load url from future %}
+<!DOCTYPE html>
+
+{# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ #}
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+English&v1' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Calligraffitti&v1' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/master.css" media="all" charset="utf-8" />
+
+    {# for descendants to provide extra css imports #}    
+    {% block css_additional %}{% endblock css_additional %}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/underscore.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/backbone.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/core.js"></script>
+
+    {# for descendants to provide extra js scripts #}
+    {% block js_additional %}
+    {% endblock js_additional %}
+
+    <title>{% block window_title %}Home{% endblock window_title %} | {% block site_name %}spine{% endblock site_name %}</title>
+
+    <!-- block head -->
+    {% block head %}{% endblock %}
+    <!-- endblock head -->
+</head>
+<body>
+  {% block content %}
+  <div class="content">
+  </div>
+  {% endblock content %}
+</body>
+</html>

@@ -1,3 +1,4 @@
-from django.db import models
+class AjaxModelHelper(object):
 
-# Create your models here.
+	def toJSON(self):
+		return {fld.name: getattr(self, fld.name) for fld in self._meta.fields}

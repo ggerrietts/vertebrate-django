@@ -2,4 +2,4 @@
 *.pyc
 *.pyo
 *.swp
-*.mo
+db/spine.db

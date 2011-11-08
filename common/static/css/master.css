@@ -67,7 +67,7 @@ strong, b {font-weight: bold;}
 a:link, a:visited, a:hover, a:active {color:#633;}
 img {border:none;}
 
-.clearfix:after { /* FF, IE8, O, S, etc. */
+.clearfix:after {
     content: ".";
     display: block;
     height: 0;
@@ -80,53 +80,9 @@ img {border:none;}
 .hidden {
     display: none;
 }
-input.honeypot {
-    visibility: hidden;
-    display: none;
-}
 .float-left {
     float: left;
 }
 .float-right {
     float: right;
-}
-.linky {
-    cursor: pointer;
-    text-decoration: underline;
-}
-.no-border {
-    border: none;
-}
-.normal {
-    font-weight: normal;
-    font-size: inherit;
-    text-decoration: none;
-}
-.bold {
-    font-weight: bold;
-    color: inherit;
-}
-.italic {
-    font-style: italic;
-}
-.underline {
-    text-decoration: underline;
-}
-.overline {
-    text-decoration: overline;
-}
-.striken {
-    text-decoration: line-through;
-}
-.align-center {
-    text-align: center;
-}
-.align-right {
-    text-align: right;
-}
-.hidden {
-    display: none;
-}
-.grayed-out {
-    color: #bbb;
 }

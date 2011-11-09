@@ -1,7 +1,19 @@
 {% extends "master.html" %}
+{% block css_additional %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/address.css" media="all" charset="utf-8" />
+{% endblock css_additional %}
 
 {% block content %}
 <h2>Contact Records</h2>
+
+<form id="contact-form" name="contact-form">
+	<div class="name-row">
+		<label for="last">Last:</label><input type="text" id="last" name="last" class="last">
+		<label for="first">First:</label><input type="text" id="first" name="first" class="first">
+	</div>
+	<label for="email">Email:</label><input type="text" id="email" name="email" class="email">
+	<input type="submit" name="Add" value="Add">
+</form>
 
 <ul id="contacts">
 </ul>

@@ -5,5 +5,5 @@ import common.models
 
 class ContactModel(models.Model, common.models.AjaxModelHelper):
 	email = models.EmailField()
-	first_name = models.CharField(max_length=100)
-	last_name = models.CharField(max_length=100)
+	first = models.CharField(max_length=100)
+	last = models.CharField(max_length=100)

@@ -3,29 +3,41 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/address.css" media="all" charset="utf-8" />
 {% endblock css_additional %}
 
+{% block js_additional %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/address.js"></script>
+
+<script type="text/javascript">
+	$(function () {
+		app = new address.ContactListView({el: '#contacts'});
+		app.render();
+	});
+</script>
+
+{% endblock js_additional %}
+
 {% block content %}
 <h2>Contact Records</h2>
 
-<form id="contact-form" name="contact-form">
-	<div class="name-row">
-		<label for="last">Last:</label><input type="text" id="last" name="last" class="last">
-		<label for="first">First:</label><input type="text" id="first" name="first" class="first">
-	</div>
-	<label for="email">Email:</label><input type="text" id="email" name="email" class="email">
-	<input type="submit" name="Add" value="Add">
-</form>
+<div id="contacts">
+	<form id="contact-form" name="contact-form">
+		<div class="name-row">
+			<label for="last">Last:</label><input type="text" id="last" name="last" class="last">
+			<label for="first">First:</label><input type="text" id="first" name="first" class="first">
+		</div>
+		<label for="email">Email:</label><input type="text" id="email" name="email" class="email">
+		<input type="submit" name="Add" value="Add">
+	</form>
 
-<ul id="contacts">
-</ul>
+	<ul id="contact-list">
+	</ul>
+</div>
 
 <div id="contact-template" class="hidden">
-	<li>
-		<div class="wrapper">
-			<div class="last"></div>
-			<div class="first"></div>
-			<div class="email"</div>
-		</div>
-	</li>
+	<div class="wrapper">
+		<div class="last"></div>
+		<div class="first"></div>
+		<div class="email"</div>
+	</div>
 </div>
 
 {% endblock content %}

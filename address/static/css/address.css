@@ -1,0 +1,10 @@
+form#contact-form {
+	width: 400px;
+	border: solid 1px black;
+}
+
+input {
+	margin-left: 50px;
+}
+
+

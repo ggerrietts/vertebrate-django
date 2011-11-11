@@ -4,7 +4,6 @@
 }
 
 	#contacts #add-row {
-		background-color: #eee;
 	}
 
 	#contacts #contact-list .contact-row {
@@ -36,11 +35,12 @@
 		width: 210px;
 	}
 
-	#contacts input[type="submit"],
-	#contacts input[type="reset"],
-	#contacts button.delete {
+	#contacts button {
 		display: inline;
-		width: 25px;
+		width: 16px;
+		padding: 0px;
+		border: none;
+		background-color: transparent;
 	}
 
 

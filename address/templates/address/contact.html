@@ -31,8 +31,12 @@
 				<label for="email">Email:</label>
 				<input type="text" id="email" name="email" class="email">
 			</div><div class="last">
-				<input type="submit" name="add" value="+">
-				<input type="reset" name="clear" value="x">
+				<button type="submit" name="add" class="add">
+					<img src="{{ STATIC_URL }}img/add.png" />
+				</button>
+				<button type="reset" name="reset" class="reset">
+					<img src="{{ STATIC_URL }}img/cancel.png" />
+				</button>
 			</div>
 		</form>
 	</div>

@@ -20,14 +20,20 @@ address.ContactCollection = core.Backbone.Collection.extend({
  *
  */
 address.ContactItemView = core.Backbone.View.extend({
-	tagName: 'li',
+	tagName: 'tr',
+
+	template: _.template('\
+		<td class="last"></td>\
+		<td class="first"></td>\
+		<td class="email"></td>\
+	'),
 
 	initialize: function () {
-		this.template = $('div#contact-template').html();
+		_.bindAll(this, 'render');
 	},
 
 	render: function () {
-		this.$(this.el).html(this.template);
+		this.$(this.el).html(this.template());
 		this.$('.last').text(this.model.get('last'));
 		this.$('.first').text(this.model.get('first'));
 		this.$('.email').text(this.model.get('email'));
@@ -42,10 +48,15 @@ address.ContactItemView = core.Backbone.View.extend({
  */
 address.ContactListView = core.Backbone.View.extend({
 	initialize: function () {
-		_.bindAll(this, 'reset_collection', 'add_model');
+		_.bindAll(this, 'reset_collection', 'add_model', 'new_model');
 		this.collection = new address.ContactCollection();
 		this.collection.bind('reset', this.reset_collection);
+		this.collection.bind('add', this.add_model);
 		this.collection.fetch();
+	},
+
+	events: {
+		'submit form': 'new_model'
 	},
 
 	reset_collection: function () {
@@ -56,6 +67,18 @@ address.ContactListView = core.Backbone.View.extend({
 		var view = new address.ContactItemView({model: model});
 		view.render();
 		this.$('ul#contact-list').append(view.el);
+	},
+
+	new_model: function () {
+		var obj,
+			attrs = {
+				email: this.$('input.email').val(),
+				last: this.$('input.last').val(),
+				first: this.$('input.first').val()
+			};
+		obj = new address.ContactModel(attrs);
+		obj.save();
+		return false;
 	}
 	
 });

@@ -1,10 +1,23 @@
-form#contact-form {
-	width: 400px;
-	border: solid 1px black;
+table#contacts {
+	width: 600px;
+	margin-top: 15px;
 }
 
-input {
-	margin-left: 50px;
-}
+	table#contacts tbody#add-row {
+		background-color: #eee;
+	}
 
+		table#contacts tbody#add-row div {
+			width: 175px;
+			float: left;
+		}
 
+		table#contacts tbody#add-row div.last {
+			width:50px;
+			padding: 10px;
+		}
+
+	table#contacts label {
+		display: block;
+		font-weight: bold;
+	}

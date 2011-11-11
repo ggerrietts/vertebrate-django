@@ -13,7 +13,18 @@ choice from git's point of view, but it didn't fit with the way the project deve
 
 I've included a requirements.txt file, but really the only hard and fast requirements
 are Python and Django. I've tried to keep the Python and the Django relatively portable,
-but I think I'm using the json library, which suggests 2.6 or newer.
+but I think I'm using the json library, which suggests 2.6 or newer. On a UNIXy system, 
+you can get this up and running by doing something like the following:
+
+1. sudo easy_install -U pip
+2. sudo pip install -U virtualenv
+3. mkdir $HOME/pythons
+4. pushd $HOME/pythons
+5. virtualenv --no-site-packages spiney
+6. popd
+7. ln -s $HOME/pythons/spiney/bin/activate
+8. source ./activate
+9. pip install ./requirements.txt
 
 
 # OVERVIEW OF BRANCHES
@@ -22,8 +33,8 @@ but I think I'm using the json library, which suggests 2.6 or newer.
    like backbone.js and jquery.
 2. *django-emails* installs some Django models, views, URLs, and templates to power the app.
 3. *backbone-emails* builds the Javascript layer that makes the basic app operate.
-4. *add-delete* adds the ability to delete a row.
-5. *add-edit* adds the ability to edit a row.
+4. *add-delete* adds the ability to delete a row. (Doesn't exist yet.)
+5. *add-edit* adds the ability to edit a row. (Doesn't exist yet.)
 
 
 # ACKNOWLEDGEMENTS

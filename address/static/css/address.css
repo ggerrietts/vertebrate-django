@@ -1,0 +1,25 @@
+
+table#contacts {
+	width: 600px;
+	margin-top: 15px;
+}
+
+	table#contacts tbody#add-row {
+		background-color: #eee;
+	}
+
+		table#contacts tbody#add-row div {
+			width: 175px;
+			float: left;
+		}
+
+		table#contacts tbody#add-row div.last {
+			width:50px;
+			padding: 10px;
+		}
+
+	table#contacts label {
+		display: block;
+		font-weight: bold;
+	}
+

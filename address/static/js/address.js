@@ -24,14 +24,26 @@ address.ContactCollection = core.Backbone.Collection.extend({
 address.ContactItemView = core.Backbone.View.extend({
     tagName: 'div',
 
+    className: 'contact-row',
+
     template: _.template('\
         <div class="last"></div>\
         <div class="first"></div>\
         <div class="email"></div>\
+        <div class="button"><button class="delete">x</button></div>\
     '),
 
+    events: {
+        'click button.delete': 'trash'
+    },
+
     initialize: function () {
-        _.bindAll(this, 'render');
+        _.bindAll(this, 'render', 'remove');
+        this.model.bind('destroy', this.remove)
+    },
+
+    trash: function () {
+        this.model.destroy();
     },
 
     render: function () {

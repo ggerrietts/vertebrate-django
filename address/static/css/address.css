@@ -1,5 +1,5 @@
 #contacts {
-	width: 600px;
+	width: 750px;
 	margin-top: 15px;
 }
 
@@ -7,14 +7,25 @@
 		background-color: #eee;
 	}
 
-		#contacts #add-row div {
-			width: 175px;
-			float: left;
-		}
+	#contacts #contact-list .contact-row {
+		width: 100%;
+	}
 
-		#contacts #add-row div.last {
-			width:50px;
-		}
+	#contacts #add-row div,
+	#contacts #contact-list .contact-row div {
+		width: 225px;
+		float: left;
+	}
+
+	#contacts #add-row div.last {
+		padding-top: 16px;
+		width:60px;
+	}
+
+	#contacts #contact-list .contact-row div.button {
+		padding-left: 15px;
+		width:60px;
+	}
 
 	#contacts label {
 		display: block;
@@ -22,15 +33,14 @@
 	}
 
 	#contacts input[type="text"] {
-		width: 170px;
+		width: 210px;
 	}
 
-	#contacts #contact-list div.last,
-	#contacts #contact-list div.first,
-	#contacts #contact-list div.email {
-		width: 175px;
+	#contacts input[type="submit"],
+	#contacts input[type="reset"],
+	#contacts button.delete {
+		display: inline;
+		width: 25px;
 	}
 
-	#contacts #contact-list div.button {
-		width: 50px;
-	}
+

@@ -21,3 +21,8 @@ table#contacts {
 		display: block;
 		font-weight: bold;
 	}
+
+	table#contacts tbody#contact-list td.last,
+	table#contacts tbody#contact-list td.first {
+		width: 175px;
+	}

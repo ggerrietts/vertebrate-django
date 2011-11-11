@@ -1,25 +1,20 @@
 var address = address || {};
 
-
 /*
- *
+ * Model and Collection --
+ * both pretty skinny at this point!
  */
-address.ContactModel = core.Backbone.Model.extend({
-    
-});
 
+address.ContactModel = core.Backbone.Model.extend({});
 
-/*
- *
- */
 address.ContactCollection = core.Backbone.Collection.extend({
     model: address.ContactModel,
     
     url: '/async/contact'
 });
 
-/*
- *
+/* 
+ * ContactItemView is for displaying a single item
  */
 address.ContactItemView = core.Backbone.View.extend({
     tagName: 'div',
@@ -59,8 +54,8 @@ address.ContactItemView = core.Backbone.View.extend({
 
 });
 
-/*
- *
+/* 
+ * ContactListView is the main block of code that drives the page
  */
 address.ContactListView = core.Backbone.View.extend({
     initialize: function () {
@@ -102,5 +97,3 @@ address.ContactListView = core.Backbone.View.extend({
     }
     
 });
-
-

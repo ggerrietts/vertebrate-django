@@ -22,12 +22,12 @@ address.ContactCollection = core.Backbone.Collection.extend({
  *
  */
 address.ContactItemView = core.Backbone.View.extend({
-    tagName: 'tr',
+    tagName: 'div',
 
     template: _.template('\
-        <td class="last"></td>\
-        <td class="first"></td>\
-        <td class="email"></td>\
+        <div class="last"></div>\
+        <div class="first"></div>\
+        <div class="email"></div>\
     '),
 
     initialize: function () {
@@ -72,6 +72,10 @@ address.ContactListView = core.Backbone.View.extend({
         this.$('#contact-list').append(view.el);
     },
 
+    clear_form: function () {
+        this.$('input[type="text"]').val('');
+    },
+
     new_model: function () {
         var attrs = {
             email: this.$('input.email').val(),
@@ -79,6 +83,7 @@ address.ContactListView = core.Backbone.View.extend({
             first: this.$('input.first').val()
         };
         this.collection.create(attrs);
+        this.clear_form();
         return false;
     }
     

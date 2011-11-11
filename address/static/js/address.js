@@ -30,7 +30,9 @@ address.ContactItemView = core.Backbone.View.extend({
         <div class="last"></div>\
         <div class="first"></div>\
         <div class="email"></div>\
-        <div class="button"><button class="delete">x</button></div>\
+        <div class="button"><button class="delete">\
+            <img src="{{ static_url }}img/delete.png" />\
+        </button></div>\
     '),
 
     events: {
@@ -47,7 +49,7 @@ address.ContactItemView = core.Backbone.View.extend({
     },
 
     render: function () {
-        this.$(this.el).html(this.template());
+        this.$(this.el).html(this.template({static_url: static_url}));
         this.$('.last').text(this.model.get('last'));
         this.$('.first').text(this.model.get('first'));
         this.$('.email').text(this.model.get('email'));

@@ -25,10 +25,22 @@ address.ContactItemView = core.Backbone.View.extend({
         <div class="last"></div>\
         <div class="first"></div>\
         <div class="email"></div>\
+        <div class="button"><button class="delete">\
+            <img src="{{ static_url }}img/delete.png" />\
+        </button></div>\
     '),
+ 
+    events: {
+        'click button.delete': 'trash'
+    },
 
     initialize: function () {
-        _.bindAll(this, 'render');
+        _.bindAll(this, 'render', 'remove');
+        this.model.bind('destroy', this.remove)
+    },
+
+    trash: function () {
+        this.model.destroy();
     },
 
     render: function () {

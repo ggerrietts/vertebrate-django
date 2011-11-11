@@ -41,10 +41,17 @@ class BackboneView(View):
         self.method = request.META.get('HTTP_X_HTTP_METHOD_OVERRIDE', request.method).lower()
 
         try:
-            retval = getattr(self, self.method)()
+            method = getattr(self, self.method)
+        except AttributeError, e:
+            print e
+            return self.http_method_not_allowed(request, *args, **kwargs)
+
+        try:
+            retval = method()
             return HttpResponse(retval,
                                 status=200,
                                 mimetype='application/json')
+
         except AttributeError, e:
             print e
             return self.http_method_not_allowed(request, *args, **kwargs)
@@ -69,8 +76,8 @@ class BackboneView(View):
     def post(self):
         """ Inserts a new object.
         """
-        data = json.loads(request.raw_post_data)
-        object = self.modelobjects.create(**data)
+        data = json.loads(self.request.raw_post_data)
+        object = self.model.objects.create(**data)
         return json.dumps(object.toJSON())
 
     def put(self):

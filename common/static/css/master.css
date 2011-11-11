@@ -60,7 +60,14 @@ body {
     line-height: 1;
     background-color:#eeeecc;
     font-family:Helvetica, Arial, sans-serif;
-    color:#333;
+    color:#633;
+}
+div.content {
+    background-color:#333;
+    color:#444;
+    padding: 2em;
+    /* border:0px solid #e4f7ff; */
+    clear:both;
 }
 em, i {font-style: italic;}
 strong, b {font-weight: bold;}

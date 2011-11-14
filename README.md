@@ -23,9 +23,11 @@ you can get this up and running by doing something like the following:
 6. popd
 7. ln -s $HOME/pythons/spiney/bin/activate
 8. source ./activate
-9. pip install ./requirements.txt
+9. pip install -r ./requirements.txt
+10. python manage.py syncdb
+11. python manage.py runserver
 
-At that point you should be able to python manage.py startapp and have everything running.
+At that point you should be able to hit http://127.0.0.1/contacts and see the app.
 
 
 # OVERVIEW OF BRANCHES

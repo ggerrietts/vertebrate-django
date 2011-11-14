@@ -28,38 +28,89 @@ address.ContactItemView = core.Backbone.View.extend({
     className: 'contact-row',
 
     template: _.template('\
-        <div class="last">&nbsp;</div>\
-        <div class="first">&nbsp;</div>\
-        <div class="email">&nbsp;</div>\
-        <div class="button"><button class="delete">\
-            <img src="{{ static_url }}img/delete.png" />\
-        </button></div>\
-        <div class="clear"></div>\
+        <div class="display">\
+            <div class="last">&nbsp;</div>\
+            <div class="first">&nbsp;</div>\
+            <div class="email">&nbsp;</div>\
+            <div class="button">\
+                <button class="edit"><img src="{{ static_url }}img/pencil.png" /></button>\
+                <button class="delete"><img src="{{ static_url }}img/delete.png" /></button>\
+            </div>\
+            <div class="clear"></div>\
+        </div>\
+        <div class="edit hidden">\
+            <div class="local-error"></div>\
+            <form>\
+                <div><input type="text" class="last" name="last" /></div>\
+                <div><input type="text" class="first" name="first" /></div>\
+                <div><input type="text" class="email" name="email" /></div>\
+                <div class="button">\
+                    <button class="accept"><img src="{{ static_url }}img/accept.png" /></button>\
+                    <button class="unedit"><img src="{{ static_url }}img/cancel.png" /></button>\
+                </div>\
+            </form>\
+            <div class="clear"></div>\
+        </div>\
     '),
  
     events: {
-        'click button.delete': 'trash'
+        'click button.delete': 'trash',
+        'click button.edit': 'edit',
+        'click button.accept': 'save',
+        'click button.unedit': 'unedit'
     },
 
     initialize: function () {
-        _.bindAll(this, 'render', 'remove');
-        this.model.bind('destroy', this.remove)
+        _.bindAll(this, 'render', 'trash', 'edit', 'save', 'unedit',
+                        'display_error');
+        this.model.bind('destroy', this.remove);
+        this.model.bind('change', this.render);
+        this.model.bind('error', this.display_error);
     },
 
     trash: function () {
         this.model.destroy();
     },
 
+    edit: function () {
+        this.$('div.display').hide();
+        this.$('div.edit').show();
+        return false;
+    },
+
+    save: function () {
+       var attrs = {
+            email: this.$('input.email').val(),
+            last: this.$('input.last').val(),
+            first: this.$('input.first').val()
+        };
+        this.model.save(attrs, {success: this.unedit});
+        return false;
+    },
+
+    display_error: function(model, msg) {
+        this.$('div.local-error').text(msg);
+    },
+
+    unedit: function () {
+        this.$('div.display').show();
+        this.$('div.edit').hide();
+        return false;
+    },
+
     render: function () {
         this.$(this.el).html(this.template({static_url: static_url}));
         if (this.model.get('last')) {
-            this.$('.last').text(this.model.get('last'));
+            this.$('div.last').text(this.model.get('last'));
+            this.$('input.last').val(this.model.get('last'));
         }
         if (this.model.get('first')) {
-            this.$('.first').text(this.model.get('first'));
+            this.$('div.first').text(this.model.get('first'));
+            this.$('input.first').val(this.model.get('first'));
         }
         if (this.model.get('email')) {
-            this.$('.email').text(this.model.get('email'));
+            this.$('div.email').text(this.model.get('email'));
+            this.$('input.email').val(this.model.get('email'));
         }
 
         return this;

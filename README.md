@@ -5,8 +5,7 @@ Backbone.js integration. It's not in any way intended to be industrial-strength,
 security-hardened, or state-of-the-art. It has been pared down to illustrate
 concepts with as little noise as possible.
 
-The project evolves over the course of the branches. Tags might have been a better
-choice from git's point of view, but it didn't fit with the way the project developed.
+The project evolves over the course of the branches.
 
 
 # REQUIREMENTS
@@ -25,6 +24,8 @@ you can get this up and running by doing something like the following:
 7. ln -s $HOME/pythons/spiney/bin/activate
 8. source ./activate
 9. pip install ./requirements.txt
+
+At that point you should be able to python manage.py startapp and have everything running.
 
 
 # OVERVIEW OF BRANCHES

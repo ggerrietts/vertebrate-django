@@ -33,8 +33,8 @@ you can get this up and running by doing something like the following:
    like backbone.js and jquery.
 2. *django-emails* installs some Django models, views, URLs, and templates to power the app.
 3. *backbone-emails* builds the Javascript layer that makes the basic app operate.
-4. *add-delete* adds the ability to delete a row. (Doesn't exist yet.)
-5. *add-edit* adds the ability to edit a row. (Doesn't exist yet.)
+4. *add-delete* adds the ability to delete a row and some validation.
+5. *add-edit* adds the ability to edit a row.
 
 
 # ACKNOWLEDGEMENTS

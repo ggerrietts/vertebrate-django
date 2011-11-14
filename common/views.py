@@ -84,7 +84,7 @@ class BackboneView(View):
         """ Edits an existing object.
         """
         oid = self.kwargs.get('oid')
-        data = json.loads(request.raw_post_data)
+        data = json.loads(self.request.raw_post_data)
         object = self.model.objects.get(pk=oid)
         object.__dict__.update(data)
         object.save()

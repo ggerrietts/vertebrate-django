@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+{% block css_additional %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/address.css" media="all" charset="utf-8" />
+{% endblock css_additional %}
+
+{% block js_additional %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/address.js"></script>
+
+<script type="text/javascript">
+	$(function () {
+		static_url = "{{ STATIC_URL }}";
+		app = new address.ContactListView({el: '#contacts'});
+		app.render();
+	});
+</script>
+
+{% endblock js_additional %}
+
+{% block content %}
+<h2>Contact Records</h2>
+
+<div id="contacts">
+	<div id="error-row"></div>
+	<div id="add-row">
+		<form id="add-contact" name="add-contact">
+			<div>
+				<label for="last">Last:</label>
+				<input type="text" id="last" name="last" class="last">
+			</div><div>
+				<label for="first">First:</label>
+				<input type="text" id="first" name="first" class="first">
+			</div><div>
+				<label for="email">Email:</label>
+				<input type="text" id="email" name="email" class="email">
+			</div><div class="last">
+				<button type="submit" name="add" class="add"><img src="{{ STATIC_URL }}img/add.png" /></button>
+				<button type="reset" name="reset" class="reset"><img src="{{ STATIC_URL }}img/cancel.png" /></button>
+			</div>
+		</form>
+	</div>
+	<div id="contact-list">
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,64 @@
+#contacts {
+	width: 711px;
+	margin-top: 15px;
+}
+
+	#contacts #add-row {
+	}
+
+	#contacts #contact-list .contact-row {
+		width: 100%;
+	}
+
+	#contacts #error-row {
+		font-weight: bold;
+		color: #900;
+	}
+
+	#contacts #add-row div,
+	#contacts #contact-list .contact-row div div {
+		width: 225px;
+		float: left;
+	}
+
+	#contacts #contact-list .contact-row div.edit div.local-error {
+		font-weight: bold;
+		color: #900;
+		clear: both;
+		width: 100%;
+	}
+
+	#contacts #contact-list .contact-row div.edit {
+		width: 100%;
+		overflow: hidden;
+		border: 2px solid #333;
+		background-color: #CC9;
+		margin-left: -2px;
+	}
+	#contacts #add-row div.last {
+		padding-top: 16px;
+		width:36px;
+	}
+
+	#contacts #contact-list .contact-row div.button {
+		width:36px;
+	}
+
+	#contacts label {
+		display: block;
+		font-weight: bold;
+	}
+
+	#contacts input[type="text"] {
+		width: 210px;
+	}
+
+	#contacts button {
+		display: inline;
+		width: 16px;
+		padding: 0px;
+		border: none;
+		background-color: transparent;
+	}
+
+

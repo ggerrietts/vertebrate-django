@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/master.css" media="all" charset="utf-8" />
+
+    {# for descendants to provide extra css imports #}    
+    {% block css_additional %}{% endblock css_additional %}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/underscore.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ext/backbone.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/core.js"></script>
+
+    {# for descendants to provide extra js scripts #}
+    {% block js_additional %}
+    {% endblock js_additional %}
+
+    <title>{% block window_title %}Home{% endblock window_title %} | {% block site_name %}spine{% endblock site_name %}</title>
+
+    <!-- block head -->
+    {% block head %}{% endblock %}
+    <!-- endblock head -->
+</head>
+<body>
+  <div class="content">
+  {% block content %}
+  {% endblock content %}
+  <div class="clear"></div>
+  </div>
+</body>
+</html>

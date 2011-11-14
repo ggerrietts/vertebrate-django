@@ -5,7 +5,13 @@ var address = address || {};
  * both pretty skinny at this point!
  */
 
-address.ContactModel = core.Backbone.Model.extend({});
+address.ContactModel = core.Backbone.Model.extend({
+    validate: function (attrs) {
+        if (attrs.email && (! /^\S+@\S+\.\S+$/.test(attrs.email))) {
+            return attrs.email + " is not a valid email address.";
+        }
+    }
+});
 
 address.ContactCollection = core.Backbone.Collection.extend({
     model: address.ContactModel,
@@ -22,12 +28,13 @@ address.ContactItemView = core.Backbone.View.extend({
     className: 'contact-row',
 
     template: _.template('\
-        <div class="last"></div>\
-        <div class="first"></div>\
-        <div class="email"></div>\
+        <div class="last">&nbsp;</div>\
+        <div class="first">&nbsp;</div>\
+        <div class="email">&nbsp;</div>\
         <div class="button"><button class="delete">\
             <img src="{{ static_url }}img/delete.png" />\
         </button></div>\
+        <div class="clear"></div>\
     '),
  
     events: {
@@ -45,9 +52,15 @@ address.ContactItemView = core.Backbone.View.extend({
 
     render: function () {
         this.$(this.el).html(this.template({static_url: static_url}));
-        this.$('.last').text(this.model.get('last'));
-        this.$('.first').text(this.model.get('first'));
-        this.$('.email').text(this.model.get('email'));
+        if (this.model.get('last')) {
+            this.$('.last').text(this.model.get('last'));
+        }
+        if (this.model.get('first')) {
+            this.$('.first').text(this.model.get('first'));
+        }
+        if (this.model.get('email')) {
+            this.$('.email').text(this.model.get('email'));
+        }
 
         return this;
     }
@@ -59,7 +72,8 @@ address.ContactItemView = core.Backbone.View.extend({
  */
 address.ContactListView = core.Backbone.View.extend({
     initialize: function () {
-        _.bindAll(this, 'reset_collection', 'add_model', 'new_model');
+        _.bindAll(this, 'reset_collection', 'add_model', 'new_model', 
+            'display_error', 'clear_form');
         this.collection = new address.ContactCollection();
         this.collection.bind('reset', this.reset_collection);
         this.collection.bind('add', this.add_model);
@@ -68,6 +82,13 @@ address.ContactListView = core.Backbone.View.extend({
 
     events: {
         'submit form': 'new_model'
+    },
+
+    display_error: function (model, msg) {
+        this.$('input.email').val(model.get('email'));
+        this.$('input.last').val(model.get('last'));
+        this.$('input.first').val(model.get('first'));
+        this.$('#error-row').text(msg);
     },
 
     reset_collection: function () {
@@ -83,6 +104,7 @@ address.ContactListView = core.Backbone.View.extend({
 
     clear_form: function () {
         this.$('input[type="text"]').val('');
+        this.$('input.last').focus();
     },
 
     new_model: function () {
@@ -91,8 +113,10 @@ address.ContactListView = core.Backbone.View.extend({
             last: this.$('input.last').val(),
             first: this.$('input.first').val()
         };
-        this.collection.create(attrs);
-        this.clear_form();
+        this.collection.create(attrs, {
+            success: this.clear_form,
+            error: this.display_error
+        });
         return false;
     }
     

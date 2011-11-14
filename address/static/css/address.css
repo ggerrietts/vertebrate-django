@@ -10,6 +10,11 @@
 		width: 100%;
 	}
 
+	#contacts #error-row {
+		font-weight: bold;
+		color: #900;
+	}
+
 	#contacts #add-row div,
 	#contacts #contact-list .contact-row div {
 		width: 225px;

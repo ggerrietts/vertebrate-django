@@ -1,51 +1,97 @@
-#contacts {
-	width: 750px;
-	margin-top: 15px;
+div.content {
+    background-color: #eee;
+    color:#444;
+    padding: 2em;
+    margin: 4em auto;
+    width: 80%;
+    border:0px solid #eee;
+    -moz-border-radius:9px;
+    -webkit-border-radius:9px;
+    border-radius:9px;
 }
-
-	#contacts #add-row {
-	}
-
-	#contacts #contact-list .contact-row {
-		width: 100%;
-	}
-
-	#contacts #error-row {
-		font-weight: bold;
-		color: #900;
-	}
-
-	#contacts #add-row div,
-	#contacts #contact-list .contact-row div {
-		width: 225px;
-		float: left;
-	}
-
-	#contacts #add-row div.last {
-		padding-top: 16px;
-		width:60px;
-	}
-
-	#contacts #contact-list .contact-row div.button {
-		padding-left: 15px;
-		width:60px;
-	}
-
-	#contacts label {
-		display: block;
-		font-weight: bold;
-	}
-
-	#contacts input[type="text"] {
-		width: 210px;
-	}
-
-	#contacts button {
-		display: inline;
-		width: 16px;
-		padding: 0px;
-		border: none;
-		background-color: transparent;
-	}
-
+    .content h2 {
+        font-size:2.6em;
+        font-weight:bold;
+        line-height:1.2em;
+        padding: 0;
+        margin:0 0 0.5em;
+    }
+ #contacts {
+    width: 100%;
+    margin-top: 15px;
+    font-size:10px;
+}
+    #contacts #add-row {
+        margin:1em 0;
+    }
+        #contacts #add-row div.last {
+            padding-top: 4em;
+            width:7%
+        }
+    #contacts #contact-list .contact-row {
+        width: 100%;
+        margin:1em 0;
+    }
+        #contacts #add-row div,
+        #contacts #contact-list .contact-row div div {
+            width: 31%;
+            float: left;
+        }
+        #contacts #contact-list .contact-row div.button {
+            padding-top: 1em;
+            width:7%
+        }
+            #contacts #contact-list .contact-row .edit div.button {
+                padding-top: 1.5em;
+            }
+        #contacts #contact-list .contact-row div.display {
+        }
+    #contacts #error-row {
+        font-weight: bold;
+        color: #900;
+        margin:1em 0;
+    }
+    #contacts label {
+        display: block;
+        font-weight: bold;
+        font-size:1.5em;
+        width: 85%;
+        padding: 2% 5% 1%;
+        background-color:#ccc;
+        border:2px solid #ccc;
+        -moz-border-radius:5px 5px 0 0 ;
+        -webkit-border-radius:5px 5px 0 0 ;
+        border-radius:5px 5px 0 0 ;
+    }
+    #contacts p {
+        font-size:1.5em;
+        width: 85%;
+        padding:1% 5%;
+    }
+    #contacts input[type="text"] {
+        font-size:1.5em;
+        width: 85%;
+        padding: 5%;
+        border:2px solid #ccc;
+        -moz-border-radius:0 0 5px 5px;
+        -webkit-border-radius:0 0 5px 5px;
+        border-radius:0 0 5px 5px;
+        margin:0;
+    }
+        #contacts .edit input[type="text"] {
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px;
+            border-style:dotted;
+        }
+    #contacts button {
+        display: inline;
+        width: 16px;
+        padding: 0px;
+        border: none;
+        background-color: transparent;
+        margin:0 0.5em;
+        cursor:pointer;
+    }
+>>>>>>> backbone-emails
 

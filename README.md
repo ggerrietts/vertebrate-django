@@ -45,8 +45,6 @@ At that point you should be able to hit http://127.0.0.1/contacts and see the ap
 
 This project has been put together with a ton of help from a lot of people.
 
-It's using the Silk icons from FAMFAMFAM (http://www.famfamfam.com/).
-
 I've taken a lot of advice from my colleagues.
 
 

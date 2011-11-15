@@ -28,9 +28,7 @@ address.ContactItemView = core.Backbone.View.extend({
     className: 'contact-row',
 
     template: _.template('\
-        <div class="last">&nbsp;</div>\
-        <div class="first">&nbsp;</div>\
-        <div class="email">&nbsp;</div>\
+        <div class="email"><p>&nbsp;</p></div>\
         <div class="button"><button class="delete">\
             <img src="{{ static_url }}img/delete.png" />\
         </button></div>\
@@ -53,13 +51,13 @@ address.ContactItemView = core.Backbone.View.extend({
     render: function () {
         this.$(this.el).html(this.template({static_url: static_url}));
         if (this.model.get('last')) {
-            this.$('.last').text(this.model.get('last'));
+            this.$('div.last p').text(this.model.get('last'));
         }
         if (this.model.get('first')) {
-            this.$('.first').text(this.model.get('first'));
+            this.$('div.first p').text(this.model.get('first'));
         }
         if (this.model.get('email')) {
-            this.$('.email').text(this.model.get('email'));
+            this.$('div.email p').text(this.model.get('email'));
         }
 
         return this;

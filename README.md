@@ -15,6 +15,7 @@ are Python and Django. I've tried to keep the Python and the Django relatively p
 but I think I'm using the json library, which suggests 2.6 or newer. On a UNIXy system, 
 you can get this up and running by doing something like the following:
 
+0. when you clone this project, rename it "spine" (oops)
 1. sudo easy_install -U pip
 2. sudo pip install -U virtualenv
 3. mkdir $HOME/pythons

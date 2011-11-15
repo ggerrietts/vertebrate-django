@@ -62,7 +62,7 @@ address.ContactItemView = core.Backbone.View.extend({
 
     initialize: function () {
         _.bindAll(this, 'render', 'trash', 'edit', 'save', 'unedit',
-                        'display_error');
+                        'display_error', 'remove');
         this.model.bind('destroy', this.remove);
         this.model.bind('change', this.render);
         this.model.bind('error', this.display_error);

@@ -29,9 +29,9 @@ address.ContactItemView = core.Backbone.View.extend({
 
     template: _.template('\
         <div class="display">\
-            <div class="last">&nbsp;</div>\
-            <div class="first">&nbsp;</div>\
-            <div class="email">&nbsp;</div>\
+            <div class="last"><p>&nbsp;</p></div>\
+            <div class="first"><p>&nbsp;</p></div>\
+            <div class="email"><p>&nbsp;</p></div>\
             <div class="button">\
                 <button class="edit"><img src="{{ static_url }}img/pencil.png" /></button>\
                 <button class="delete"><img src="{{ static_url }}img/delete.png" /></button>\
@@ -101,15 +101,15 @@ address.ContactItemView = core.Backbone.View.extend({
     render: function () {
         this.$(this.el).html(this.template({static_url: static_url}));
         if (this.model.get('last')) {
-            this.$('div.last').text(this.model.get('last'));
+            this.$('div.last p').text(this.model.get('last'));
             this.$('input.last').val(this.model.get('last'));
         }
         if (this.model.get('first')) {
-            this.$('div.first').text(this.model.get('first'));
+            this.$('div.first p').text(this.model.get('first'));
             this.$('input.first').val(this.model.get('first'));
         }
         if (this.model.get('email')) {
-            this.$('div.email').text(this.model.get('email'));
+            this.$('div.email p').text(this.model.get('email'));
             this.$('input.email').val(this.model.get('email'));
         }
 
@@ -154,8 +154,8 @@ address.ContactListView = core.Backbone.View.extend({
     },
 
     clear_form: function () {
-        this.$('input[type="text"]').val('');
-        this.$('input.last').focus();
+        this.$('#add-contact input[type="text"]').val('');
+        this.$('#add-contact input.last').focus();
     },
 
     new_model: function () {

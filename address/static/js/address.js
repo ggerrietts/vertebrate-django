@@ -22,9 +22,11 @@ address.ContactItemView = core.Backbone.View.extend({
     className: 'contact-row',
 
     template: _.template('\
-        <div class="last"><p></p></div>\
-        <div class="first"><p></p></div>\
-        <div class="email"><p></p></div>\
+        <div class="display clearfix">\
+            <div class="last"><p></p></div>\
+            <div class="first"><p></p></div>\
+            <div class="email"><p></p></div>\
+        </div>\
     '),
 
     initialize: function () {

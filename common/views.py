@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class RestfulError(Exception):
-    status = 400
+    status = 0
     def __init__(self, msg):
         self.message = msg
     
@@ -20,8 +20,11 @@ class RestfulError(Exception):
             mimetype='text/plain',
         )
 
-class UnknownError(RestfulError):
+class UnknownServerError(RestfulError):
     status = 500
+
+class UnknownClientError(RestfulError):
+    status = 400
 
 
 class BackboneView(View):
@@ -43,7 +46,7 @@ class BackboneView(View):
         try:
             method = getattr(self, self.method)
         except AttributeError, e:
-            print e
+            logger.error(str(e))
             return self.http_method_not_allowed(request, *args, **kwargs)
 
         try:
@@ -53,7 +56,7 @@ class BackboneView(View):
                                 mimetype='application/json')
 
         except AttributeError, e:
-            print e
+            logger.error(str(e))
             return self.http_method_not_allowed(request, *args, **kwargs)
 
         except RestfulError, e:

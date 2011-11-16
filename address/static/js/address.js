@@ -28,11 +28,14 @@ address.ContactItemView = core.Backbone.View.extend({
     className: 'contact-row',
 
     template: _.template('\
-        <div class="email"><p>&nbsp;</p></div>\
-        <div class="button"><button class="delete">\
-            <img src="{{ static_url }}img/delete.png" />\
-        </button></div>\
-        <div class="clear"></div>\
+        <div class="display clearfix">\
+            <div class="last"><p>&nbsp;</p></div>\
+            <div class="first"><p>&nbsp;</p></div>\
+            <div class="email"><p>&nbsp;</p></div>\
+            <div class="button"><button class="delete">\
+                <img src="{{ static_url }}img/delete.png" />\
+            </button></div>\
+        </div>\
     '),
  
     events: {

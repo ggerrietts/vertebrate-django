@@ -70,7 +70,8 @@ address.ContactListView = core.Backbone.View.extend({
     },
 
     clear_form: function () {
-        this.$('input[type="text"]').val('');
+        this.$('#add-contact input[type="text"]').val('');
+        this.$('#add-contact input.last').focus();
     },
 
     new_model: function () {
